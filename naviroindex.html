@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Tracker</title>
+  <style>
+    body {
+      background-color: #1b1b1b; /* Dark background */
+      color: #ff69b4; /* Neon pink text */
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: 3em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff69b4;
+      margin-top: 30px;
+    }
+
+    .counter {
+      font-size: 1.5em;
+      color: #ff69b4;
+      margin: 20px 0;
+    }
+
+    .goal {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      width: 70%;
+      background-color: #333;
+      border-radius: 25px;
+      margin: 20px auto;
+      height: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0;
+      background-color: #ff69b4; /* Pink progress */
+      border-radius: 25px;
+      transition: width 0.5s;
+    }
+
+    .section {
+      margin: 40px 0;
+    }
+
+    /* Pink Button similar to "Book Your Spot" */
+    .action-btn {
+      background-color: #ff69b4;
+      color: #1b1b1b;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+
+    .action-btn:hover {
+      background-color: #ff86c8;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Goal Progress</h2>
+
+  <!-- B2B Clients Progress -->
+  <div class="section">
+    <div class="counter"><span id="b2b-clients">13</span>/28 B2B Clients</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-b2b"></div>
+    </div>
+    <div class="goal" id="goal-b2b">0% Completed</div>
+  </div>
+
+  <!-- Creators on Platform Progress -->
+  <div class="section">
+    <div class="counter"><span id="creators">0</span>/100 Creators on the Platform</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-creators"></div>
+    </div>
+    <div class="goal" id="goal-creators">0% Completed</div>
+  </div>
+
+  <!-- VC Calls Booked Progress -->
+  <div class="section">
+    <div class="counter"><span id="vc-calls">0</span>/100 VC Calls Booked in the Calendar</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-vc"></div>
+    </div>
+    <div class="goal" id="goal-vc">0% Completed</div>
+  </div>
+
+  <!-- ARR Progress -->
+  <div class="section">
+    <div class="counter"><span id="arr">4000</span>/100,000 ARR</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-arr"></div>
+    </div>
+    <div class="goal" id="goal-arr">0% Completed</div>
+  </div>
+
+  <!-- Action Button -->
+  <a href="#" class="action-btn">Book Your Spot</a>
+
+  <script>
+    // Function to calculate progress percentage and update UI
+    function updateProgress(current, total, progressElement, goalElement) {
+      let percentage = (current / total) * 100;
+      if (percentage > 100) percentage = 100; // Prevent overflow
+      progressElement.style.width = percentage + "%";
+      goalElement.textContent = percentage.toFixed(2) + "% Completed";
+    }
+
+    // B2B Clients Progress
+    const b2bCurrent = 13;
+    const b2bTotal = 28;
+    updateProgress(b2bCurrent, b2bTotal, document.getElementById('progress-b2b'), document.getElementById('goal-b2b'));
+
+    // Creators on Platform Progress
+    const creatorsCurrent = 0;
+    const creatorsTotal = 100;
+    updateProgress(creatorsCurrent, creatorsTotal, document.getElementById('progress-creators'), document.getElementById('goal-creators'));
+
+    // VC Calls Booked Progress
+    const vcCallsCurrent = 0;
+    const vcCallsTotal = 100;
+    updateProgress(vcCallsCurrent, vcCallsTotal, document.getElementById('progress-vc'), document.getElementById('goal-vc'));
+
+    // ARR Progress
+    const arrCurrent = 4000;
+    const arrTotal = 100000;
+    updateProgress(arrCurrent, arrTotal, document.getElementById('progress-arr'), document.getElementById('goal-arr'));
+  </script>
+
+</body>
+</html>
